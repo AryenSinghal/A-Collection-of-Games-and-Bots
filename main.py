@@ -82,8 +82,8 @@ class ImageButton(Button):
 		self.bottom_rect.midtop = self.top_rect.midtop
 		self.bottom_rect.height = self.top_rect.height + self.dynamic_elecation
 
-		pygame.draw.rect(screen,self.bottom_color, self.bottom_rect,border_radius = 12)
-		pygame.draw.rect(screen,self.top_color, self.top_rect,border_radius = 12)
+		pygame.draw.rect(screen,self.bottom_color, self.bottom_rect,border_radius = 36)
+		pygame.draw.rect(screen,self.top_color, self.top_rect,border_radius = 36)
 		screen.blit(self.image, self.image_rect)
 		screen.blit(self.text_surf, self.text_rect)
 		self.check_click()
