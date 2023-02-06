@@ -1,4 +1,4 @@
-import pygame
+import pygame, webbrowser
 
 from twentyfortyeight.Game import runGame
 from twentyfortyeight.AI import runAI
@@ -134,6 +134,7 @@ ClickAI.press = onClickAIPress
 while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            webbrowser.open("https://youtu.be/OcfqDPAy7zc?t=7")
             run = False
     
     screen.fill((30, 30, 30))
