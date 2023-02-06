@@ -1,9 +1,11 @@
 import pygame
+from pygame import mixer
 
 from twentyfortyeight.Game import runGame
 from twentyfortyeight.AI import runAI
 
 from threading import Thread
+import os
 
 pygame.init()
 pygame.display.set_caption('A Collection of Games and Bots')
@@ -14,6 +16,7 @@ clock = pygame.time.Clock()
 
 menu_text = brinjal.render('MENU',True,'#FFFFFF')
 menu_text_rect = menu_text.get_rect(center = (int(13.5*35/2), 40))
+lemons = mixer.Sound(f'{os.getcwd()}\\assets\\lemons.wav')
 
 class Button:
 	def __init__(self,text,width,height,pos,elevation):
@@ -106,11 +109,6 @@ def onSnekAIPress():
 def onMazePress():
 	from MazeGenerator import MazeGenerationAstar
 
-def onClickAIPress():
-	i = 1
-	while True:
-		print(i, 'click')
-		i += 1
 
 run = True
 _2048Game = Button('2048 Game',200,40,(20, 100),5)
@@ -120,7 +118,6 @@ MazeAI = Button('Maze AI',200,40,(250, 180),5)
 Snek = Button('Snake',200,40,(20, 260),5)
 SnekAI = Button('SnakeAI',200,40,(250, 260),5)
 ClickGame = ImageButton('assets/cookie.png','Cookie clicker',200,200,(135, 340),5)
-ClickAI = Button('Cookie clicker AI',200,40,(250, 340),5)
 bootons = [_2048Game, _2048AI, TicTacToe, MazeAI, Snek, SnekAI, ClickGame]
 
 _2048Game.press = on2048PressGame
@@ -129,7 +126,7 @@ TicTacToe.press = onTicTacToePress
 MazeAI.press = onMazePress
 Snek.press = onSnekPress
 SnekAI.press = onSnekAIPress
-ClickAI.press = onClickAIPress
+ClickGame.press = lemons.play
 
 while run:
     for event in pygame.event.get():
